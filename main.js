@@ -44,7 +44,7 @@ buttons.forEach(function(button){
             operando = '';
 
         }else {// Se preciona algun numero
-            numeroActual = numeroActual + Number(buttontext);
+            numeroActual = Number(numeroActual + buttontext);
         }
         inputDisplay.value = numeroActual;
     })        
