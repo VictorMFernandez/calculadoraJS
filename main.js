@@ -15,8 +15,37 @@ const buttons = document.querySelectorAll('.button');
 buttons.forEach(function(button){
     //console.log(button);
     button.addEventListener('click', function(event){
-        console.log('Me hicieron click');
-        console.log('event')
+        //console.log('Me hicieron click');
+        //console.log('event')
+        const button = event.target;
+        const buttontext = button.textContent;
 
+        //console.log(buttontext);
+        
+        if('+-*'.includes(buttontext)){
+            operador = buttontext;
+            operando = Number(numeroActual);
+            numeroActual = '0';
+
+        
+        }else if(buttontext === '='){
+            // aqui realizo las operaciones matematicas en base al numero actualy el operador
+            if(operador === '+'){
+                numeroActual = Number(operando)+Number(numeroActual)
+            }else if(operador === '-'){
+                numeroActual = Number(operando)-Number(numeroActual)
+            }else if(operador === '*'){
+                numeroActual = Number(operando)*Number(numeroActual)
+            }
+
+        }else if(buttontext === 'AC'){
+            numeroActual = '0';
+            operador = '';
+            operando = '';
+
+        }else {// Se preciona algun numero
+            numeroActual = numeroActual + Number(buttontext);
+        }
+        inputDisplay.value = numeroActual;
     })        
 })
